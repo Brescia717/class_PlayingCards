@@ -1,8 +1,8 @@
 class Deck
   def initialize
     @collection = []
-    PlayingCards::SUITS.each do |suit|
-      PlayingCards::VALUES.each do |value|
+    PlayingCard::SUITS.each do |suit|
+      PlayingCard::VALUES.each do |value|
         @collection << PlayingCard.new(value, suit)
       end
     end

@@ -7,7 +7,7 @@ class PlayerHand
     score = 0
     @collection.each do |card|
       puts card.rank
-      score += card.value
+      score += PointCalculation.new(card).value
     end
     score
   end

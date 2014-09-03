@@ -4,12 +4,12 @@ class PointCalculation
   end
 
   def value
-    if self.face_card?
+    if @playing_card.face_card?
       15
-    elsif self.rank == 'A'
+    elsif @playing_card.rank == 'A'
       1
     else
-      self.rank.to_i
+      @playing_card.rank.to_i
     end
   end
 end
