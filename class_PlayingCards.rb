@@ -1,6 +1,9 @@
 class PlayingCard
   attr_reader :rank, :suit
 
+  SUITS = ['♠︎', '♣︎', '♥︎', '♦︎']
+  VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+
   def initialize(rank, suit)
     @rank = rank
     @suit = suit
@@ -8,6 +11,13 @@ class PlayingCard
 
   def face_card?
     ['J', 'Q', 'K'].include?(@rank)
+  end
+end
+
+
+class PointCalculation
+  def initialize(playing_card)
+    @playing_card = playing_card
   end
 
   def value
@@ -20,6 +30,7 @@ class PlayingCard
     end
   end
 end
+
 
 class PlayerHand
   def initialize(collection)
@@ -36,14 +47,12 @@ class PlayerHand
   end
 end
 
-SUITS = ['♠︎', '♣︎', '♥︎', '♦︎']
-VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 
 class Deck
   def initialize
     @collection = []
-    SUITS.each do |suit|
-      VALUES.each do |value|
+    PlayingCards::SUITS.each do |suit|
+      PlayingCards::VALUES.each do |value|
         @collection << PlayingCard.new(value, suit)
       end
     end
